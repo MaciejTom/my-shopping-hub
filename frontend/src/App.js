@@ -10,13 +10,14 @@ import Sidebar from './components/Sidebar'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
 import Product from './pages/Product'
+import Category from './pages/Category'
 
 function App() {
 
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleSidebar = () => {
-    console.log("asdasdasd")
+   
     setIsOpen(prev => !prev)
   }
 
@@ -27,9 +28,10 @@ function App() {
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>
          
       <Routes>
-        <Route exact path="/" component={Home}/>
-        <Route exact path="/product/:id" component={Product}/>
-        <Route exact path="/cart" component={Cart}/>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/product/:id" element={<Product/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/category" element={<Category/>}/>
       </Routes>
      <GlobalStyles />
     </div>

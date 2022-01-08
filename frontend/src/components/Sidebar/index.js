@@ -15,6 +15,9 @@ const Sidebar = ({ toggleSidebar, isOpen }) => {
          <SidebarLink to="/shop" onClick={() => toggleSidebar()}>
            SHOP
          </SidebarLink>
+         <SidebarLink to="/category" onClick={() => toggleSidebar()}>
+           CATEGORY
+         </SidebarLink>
          <SidebarLink to="/cart" onClick={() => toggleSidebar()}>
            CART <ShopAmount>0</ShopAmount>
          </SidebarLink>

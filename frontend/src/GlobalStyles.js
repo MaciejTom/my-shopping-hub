@@ -21,11 +21,12 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    
    
     h1 {
         font-size: 2rem;
         font-weight: 600;
-        color: var(--white); 
+        
     }
     h3 {
         font-size: 1.1rem;
@@ -33,7 +34,7 @@ body {
     }
     p {
         font-size: 1rem;
-        color: var(--white);
+        
     }   
     }
 `;

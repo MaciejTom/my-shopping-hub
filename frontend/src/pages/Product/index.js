@@ -1,10 +1,9 @@
-import React from 'react'
+//Components 
+import SingleProductScreen from '../../components/SingleProductScreen'
 
 const Product = () => {
     return (
-        <div>
-            
-        </div>
+    <SingleProductScreen/>
     )
 }
 
