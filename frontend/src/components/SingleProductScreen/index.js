@@ -16,28 +16,79 @@ import {
   AddContainer,
   AmountContainer,
   Button,
-  Amount
+  Amount,
+  Minus,
+  Plus
   
 } from "./SingleProductScreen.styles";
 
-import {AiOutlineMinus, AiOutlinePlus} from "react-icons/ai"
+//Components
+import Spinner from '../Spinner'
 
-const SingleProductScreen = ({ category }) => {
+//React
+import {useState, useEffect} from "react"
+import {useDispatch, useSelector} from 'react-redux'
+
+//Actions
+import { getProductDetails } from '../../redux/actions/productActions'
+import { addToCart } from '../../redux/actions/cartActions'
+
+import {useParams, useNavigate} from 'react-router-dom';
+
+
+const SingleProductScreen = () => {
+
+  const [quantity, setQuantity] = useState(1);
+
+  const handleQuantity = (type) => {
+    if (type == "plus" && quantity < product.countInStock) {
+      setQuantity(prev => prev + 1)
+
+    } else if (type == "minus" && quantity > 1) {
+      setQuantity(prev => prev - 1)
+    }
+  }
+  const dispatch = useDispatch();
+
+  const productDetails = useSelector(state => state.getProductDetails);
+  const {loading, error, product} = productDetails;
+
+  const { id } = useParams();
+  let navigate = useNavigate();
+  
+
+  
+
+  useEffect(() => {
+    
+    if (product && id !== product._id) {
+      dispatch(getProductDetails(id))
+    }
+  }, [dispatch, id, product])
+
+  if (loading) {
+    return <Spinner />;
+  }
+  if (error) {
+    return <div>SOMETHING WENT WRONG :/</div>;
+  }
+
+  const addToCartHandler = () => {
+    dispatch(addToCart(id, quantity))
+    navigate("/cart");
+  }
+  
   return (
     <Wrapper>
       <ImgContainer>
-        <Image src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80" />
+        <Image src={product.imageUrl} />
       </ImgContainer>
       <InfoContainer>
-        <Title>Denim Jumpsuit</Title>
+        <Title>{product.name}</Title>
         <Desc>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-          venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-          iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-          tristique tortor pretium ut. Curabitur elit justo, consequat id
-          condimentum ac, volutpat ornare.
+          {product.description}
         </Desc>
-        <Price>$ 20</Price>
+        <Price>${product.price}</Price>
         <FilterContainer>
           <Filter>
             <FilterTitle>Color</FilterTitle>
@@ -45,7 +96,7 @@ const SingleProductScreen = ({ category }) => {
             <FilterColor color="darkblue" />
             <FilterColor color="gray" />
           </Filter>
-          <Filter>
+          {/* <Filter>
             <FilterTitle>Size</FilterTitle>
             <FilterSize>
               <FilterSizeOption>XS</FilterSizeOption>
@@ -54,15 +105,15 @@ const SingleProductScreen = ({ category }) => {
               <FilterSizeOption>L</FilterSizeOption>
               <FilterSizeOption>XL</FilterSizeOption>
             </FilterSize>
-          </Filter>
+          </Filter> */}
         </FilterContainer>
         <AddContainer>
             <AmountContainer>
-              <AiOutlineMinus />
-              <Amount>1</Amount>
-              <AiOutlinePlus />
+              <Minus onClick={() => handleQuantity("minus")}/>
+              <Amount>{quantity}</Amount>
+              <Plus onClick={() => handleQuantity("plus")}/>
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={() => addToCartHandler()}>ADD TO CART</Button>
           </AddContainer>
       </InfoContainer>
     </Wrapper>

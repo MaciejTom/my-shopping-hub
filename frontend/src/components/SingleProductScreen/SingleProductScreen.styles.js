@@ -1,4 +1,6 @@
 import styled from "styled-components/macro";
+//Icons
+import {AiOutlineMinus, AiOutlinePlus} from "react-icons/ai"
 
 export const Wrapper = styled.div`
   padding: 50px;
@@ -125,3 +127,10 @@ export const Button = styled.button`
   }
 `;
 
+export const Minus = styled(AiOutlineMinus)`
+  cursor: pointer;
+`;
+
+export const Plus = styled(AiOutlinePlus)`
+  cursor: pointer;
+`;

@@ -12,6 +12,7 @@ import Cart from './pages/Cart'
 import Product from './pages/Product'
 import Category from './pages/Category'
 
+
 function App() {
 
   const [isOpen, setIsOpen] = useState(false)
