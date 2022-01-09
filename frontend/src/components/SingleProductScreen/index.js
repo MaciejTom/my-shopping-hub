@@ -36,7 +36,7 @@ import { addToCart } from '../../redux/actions/cartActions'
 import {useParams, useNavigate} from 'react-router-dom';
 
 
-const SingleProductScreen = () => {
+const SingleProductScreen = ({match}) => {
 
   const [quantity, setQuantity] = useState(1);
 
@@ -54,7 +54,7 @@ const SingleProductScreen = () => {
   const {loading, error, product} = productDetails;
 
   const { id } = useParams();
-  let navigate = useNavigate();
+  
   
 
   
@@ -75,7 +75,7 @@ const SingleProductScreen = () => {
 
   const addToCartHandler = () => {
     dispatch(addToCart(id, quantity))
-    navigate("/cart");
+    // navigate("/cart");
   }
   
   return (

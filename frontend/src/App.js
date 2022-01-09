@@ -2,7 +2,7 @@ import {useState} from 'react'
 //Styles
 import { GlobalStyles } from "./GlobalStyles";
 //Router
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 //Components
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
@@ -24,16 +24,16 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div className="App">      
       <Navbar toggleSidebar={toggleSidebar}/>
-      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>
-         
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/product/:id" element={<Product/>}/>
-        <Route path="/cart" element={<Cart/>}/>
-        <Route path="/category" element={<Category/>}/>
-      </Routes>
+      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>  
+      <Switch>
+     
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/product/:id" component={Product}/>
+        <Route exact path="/cart" component={Cart}/>
+        <Route exact path="/category" component={Category}/>
+      </Switch>
      <GlobalStyles />
     </div>
     </Router>
