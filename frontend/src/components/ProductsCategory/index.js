@@ -33,7 +33,7 @@ const ProductsCategory = ({ category }) => {
     console.error(error)
     return <div>SOMETHING WENT WRONG :/</div>;
   }
-  console.log(products)
+  
   return (
     <SidebarContainer>
       <CategoryTitle>{category}</CategoryTitle>

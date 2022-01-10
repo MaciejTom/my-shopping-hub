@@ -1,6 +1,8 @@
 
 
-const Home = () => {
+const Home = ({match}) => {
+
+    console.log(match)
     return (
         <div>
            asdasd

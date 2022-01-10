@@ -33,31 +33,25 @@ import {useDispatch, useSelector} from 'react-redux'
 import { getProductDetails } from '../../redux/actions/productActions'
 import { addToCart } from '../../redux/actions/cartActions'
 
-import {useParams, useNavigate} from 'react-router-dom';
+//Router
+import {useParams, useHistory} from 'react-router-dom';
 
+//Helpers
+import {handleQuantity} from '../../helpers'
 
-const SingleProductScreen = ({match}) => {
+const SingleProductScreen = () => {
 
+  const history = useHistory();
+  
   const [quantity, setQuantity] = useState(1);
 
-  const handleQuantity = (type) => {
-    if (type == "plus" && quantity < product.countInStock) {
-      setQuantity(prev => prev + 1)
-
-    } else if (type == "minus" && quantity > 1) {
-      setQuantity(prev => prev - 1)
-    }
-  }
+  
   const dispatch = useDispatch();
 
   const productDetails = useSelector(state => state.getProductDetails);
   const {loading, error, product} = productDetails;
 
-  const { id } = useParams();
-  
-  
-
-  
+  const { id } = useParams();  
 
   useEffect(() => {
     
@@ -75,7 +69,7 @@ const SingleProductScreen = ({match}) => {
 
   const addToCartHandler = () => {
     dispatch(addToCart(id, quantity))
-    // navigate("/cart");
+    history.push("/cart");
   }
   
   return (
@@ -109,9 +103,9 @@ const SingleProductScreen = ({match}) => {
         </FilterContainer>
         <AddContainer>
             <AmountContainer>
-              <Minus onClick={() => handleQuantity("minus")}/>
+              <Minus onClick={() => handleQuantity("minus", setQuantity, quantity,product.countInStock)}/>
               <Amount>{quantity}</Amount>
-              <Plus onClick={() => handleQuantity("plus")}/>
+              <Plus onClick={() => handleQuantity("plus", setQuantity, quantity, product.countInStock)}/>
             </AmountContainer>
             <Button onClick={() => addToCartHandler()}>ADD TO CART</Button>
           </AddContainer>
