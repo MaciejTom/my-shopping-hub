@@ -2,11 +2,12 @@
 import SingleProductElement from "../SingleProductElement";
 import Spinner from "../Spinner";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {useFetchCategory} from '../../hooks/useFetchCategory'
 
 // Actions
-import { getProducts as listProducts } from "../../redux/actions/productActions";
+// import { getProducts as listProducts } from "../../redux/actions/productActions";
 // Styles
 import {
   SidebarContainer,
@@ -14,35 +15,39 @@ import {
   CategoryProducts,
 } from "./ProductsCategory.styles";
 
-const ProductsCategory = ({ category }) => {
-  const dispatch = useDispatch();
 
-  const getProducts = useSelector((state) => state.getProducts);
-  
-  const { products, loading, error } = getProducts;
 
-  
-  useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+const ProductsCategory = ({ category, name }) => {
+  //   const dispatch = useDispatch();
+  // const [cate, setCate] = useState([])
+  // const getProducts = useSelector((state) => state.getProducts);
+
+  // const getProductsByCategory = useSelector((state) => state.getProducstByCategory);
+
+  // const { products, loading, error } = getProducts;
+
+  // const { products2, loading2, error2 } = getProductsByCategory;
+
+ 
+
+  const { data, loading, error } = useFetchCategory(category);
+
+  console.log(data)
 
   if (loading) {
     return <Spinner />;
   }
   if (error) {
-    console.error(error)
     return <div>SOMETHING WENT WRONG :/</div>;
   }
-  
+
   return (
     <SidebarContainer>
-      <CategoryTitle>{category}</CategoryTitle>
+      <CategoryTitle>{name}</CategoryTitle>
       <CategoryProducts>
-          {products.map(product => 
-         
-            <SingleProductElement key={product._id} {...product}/>
-            )}
-        
+        {data.map((product) => (
+          <SingleProductElement key={product._id} {...product} />
+        ))}
       </CategoryProducts>
     </SidebarContainer>
   );

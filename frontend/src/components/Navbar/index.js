@@ -1,24 +1,37 @@
 //Icons
 import { FaBars } from "react-icons/fa";
 
+//Redux
+import {useSelector} from 'react-redux'
 //Styles
 import {
   Nav,
   NavbarContainer,
   NavLogo,
+  NavLinkLogo,
   MobileIcon,
   NavMenu,
   NavItem,
   NavLinks,
   ShopAmount,
+  CartIcon
 } from "./Navbar.styles";
 
+import logo from '../../img/shopping.png'
+
 const Navbar = ({ toggleSidebar }) => {
+
+  const cart = useSelector(state => state.cart)
+  const {cartItems} = cart
+  const getCartCount = () => {
+    return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0)
+  }  
+  
   return (
     <>
       <Nav>
         <NavbarContainer>
-          <NavLogo to="/">MY-SHOPPING-HUB</NavLogo>
+          <NavLinkLogo to="/"><NavLogo src={logo} /></NavLinkLogo>
           <MobileIcon>
             <FaBars onClick={() => toggleSidebar()} />
           </MobileIcon>
@@ -27,15 +40,17 @@ const Navbar = ({ toggleSidebar }) => {
               <NavLinks to="/">HOME</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="/shop">SHOP</NavLinks>
+              <NavLinks to="/laptops">LAPTOPS</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="/category">Category</NavLinks>
+              <NavLinks to="/gaming">GAMING</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="/cart">
-                {" "}
-                CART <ShopAmount>0</ShopAmount>
+              <NavLinks to="/phones">SMARTPHONES</NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks to="/cart">                
+                <CartIcon size="27px"/><ShopAmount>{getCartCount()}</ShopAmount>
               </NavLinks>
             </NavItem>
           </NavMenu>
@@ -47,18 +62,4 @@ const Navbar = ({ toggleSidebar }) => {
 
 export default Navbar;
 
-// <Wrapper>
-//   <Content>
-//     <Link to="/">MY-SHOPPING-CENTER</Link>
-//     <Nav>
-//       <Link to="/">Shop</Link>
 
-//       <Link to="/cart">
-//         CART <ShopAmount>0</ShopAmount>
-//       </Link>
-//     </Nav>
-//     <Button onClick={() => toggleSidedrawer()}>
-//       <FaBars />
-//     </Button>
-//   </Content>
-// </Wrapper>

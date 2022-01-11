@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 import CartItem from '../CartItem'
+import CartSummary from '../CartSummary'
 
 import {
   Wrapper,
@@ -13,15 +14,7 @@ import {
   TopText,
   Bottom,
   Info,
-  Summary,
-  SummaryTitle,
-  SummaryItem,
-  SummaryItemText,
-  SummaryItemPrice,
-  Button,
 } from "./CartComponent.styles";
-
-
 
 const CartComponent = () => {
 
@@ -29,12 +22,15 @@ const dispatch = useDispatch();
 
 const {cartItems} = useSelector(state => state.cart);
 
+const getCartCount = () => {
+  return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0)
+}
 
+const getCartSubtotal = () => {
+  return cartItems.reduce((price, item) => (item.price * item.qty) + price, 0)
+}
 
-
-
-
-  return (
+return (
     <Wrapper>
       <Title>YOUR BAG</Title>
       <Top>
@@ -47,29 +43,10 @@ const {cartItems} = useSelector(state => state.cart);
       </Top>
       <Bottom>
         <Info>
-          {cartItems ? cartItems.map(item => <CartItem key={item._id} {...item}/>) : <div>EMPTY CART</div>}
+          {cartItems.length ? cartItems.map(item => <CartItem key={item._id} {...item} />) : <div>EMPTY CART <Link to="/category">GO BACK</Link></div>}
           
         </Info>
-        <Summary>
-          <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-          <SummaryItem>
-            <SummaryItemText>Subtotal</SummaryItemText>
-            <SummaryItemPrice>$ 80</SummaryItemPrice>
-          </SummaryItem>
-          <SummaryItem>
-            <SummaryItemText>Estimated Shipping</SummaryItemText>
-            <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-          </SummaryItem>
-          <SummaryItem>
-            <SummaryItemText>Shipping Discount</SummaryItemText>
-            <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-          </SummaryItem>
-          <SummaryItem type="total">
-            <SummaryItemText>Total</SummaryItemText>
-            <SummaryItemPrice>$ 80</SummaryItemPrice>
-          </SummaryItem>
-          <Button>CHECKOUT NOW</Button>
-        </Summary>
+        <CartSummary getCartCount={getCartCount} getCartSubtotal={getCartSubtotal}/>
       </Bottom>
     </Wrapper>
   );

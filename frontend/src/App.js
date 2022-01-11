@@ -1,6 +1,8 @@
 import {useState} from 'react'
 //Styles
 import { GlobalStyles } from "./GlobalStyles";
+import { ThemeProvider } from "styled-components";
+import {theme} from './utils/theme'
 //Router
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 //Components
@@ -10,7 +12,9 @@ import Sidebar from './components/Sidebar'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
 import Product from './pages/Product'
-import Category from './pages/Category'
+import Gaming from './pages/Gaming'
+import Phones from './pages/Phones'
+import Laptops from './pages/Laptops'
 
 
 function App() {
@@ -24,6 +28,7 @@ function App() {
 
   return (
     <Router>
+      <ThemeProvider theme={theme}>
       <div className="App">      
       <Navbar toggleSidebar={toggleSidebar}/>
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>  
@@ -32,10 +37,13 @@ function App() {
         <Route exact path="/" component={Home}/>
         <Route exact path="/product/:id" component={Product}/>
         <Route exact path="/cart" component={Cart}/>
-        <Route exact path="/category" component={Category}/>
+        <Route exact path="/gaming" component={Gaming}/>
+        <Route exact path="/laptops" component={Laptops}/>
+        <Route exact path="/phones" component={Phones}/>
       </Switch>
      <GlobalStyles />
     </div>
+    </ThemeProvider>
     </Router>
   );
 }

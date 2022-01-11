@@ -22,9 +22,9 @@ import {
 
 
 //Helpers
-import {handleQuantity} from '../../helpers'
+import {handleQuantity} from '../../utils/helpers'
 //Actions 
-import { addToCart } from '../../redux/actions/cartActions';
+import { addToCart, removeFromCart} from '../../redux/actions/cartActions';
 
 const CartItem = ({
   product,
@@ -42,9 +42,9 @@ const CartItem = ({
     dispatch(addToCart(product, quantity))
   }, [quantity])
 
- const removeFromCart = () => {
+ const removeItemFromCart = () => {
    console.log(product)
-  //  dispatch(removeFromCart(product))
+   dispatch(removeFromCart(product))
  }
   return (
     <>
@@ -73,7 +73,7 @@ const CartItem = ({
           </ProductAmountContainer>
           <ProductPrice>${price}</ProductPrice>
         </PriceDetail>
-        <DeleteButton onClick={() => removeFromCart()}size='25px'/>
+        <DeleteButton onClick={() => removeItemFromCart()}size='25px'/>
       </Product>
       <Hr />
     </>

@@ -37,7 +37,7 @@ import { addToCart } from '../../redux/actions/cartActions'
 import {useParams, useHistory} from 'react-router-dom';
 
 //Helpers
-import {handleQuantity} from '../../helpers'
+import {handleQuantity} from '../../utils/helpers'
 
 const SingleProductScreen = () => {
 
