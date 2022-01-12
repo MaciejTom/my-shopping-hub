@@ -1,12 +1,12 @@
+import Header from '../../components/Header'
 
+const Home = ({}) => {
 
-const Home = ({match}) => {
-
-    console.log(match)
+    
     return (
-        <div>
-           asdasd
-        </div>
+        <>
+        <Header/>
+        </>
     )
 }
 

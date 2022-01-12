@@ -18,14 +18,11 @@ import {
 } from "./Navbar.styles";
 
 import logo from '../../img/shopping.png'
+import {useGetCartCount} from '../../hooks/useGetCartCount'
 
 const Navbar = ({ toggleSidebar }) => {
 
-  const cart = useSelector(state => state.cart)
-  const {cartItems} = cart
-  const getCartCount = () => {
-    return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0)
-  }  
+  const shopTotalProducts = useGetCartCount();
   
   return (
     <>
@@ -50,7 +47,7 @@ const Navbar = ({ toggleSidebar }) => {
             </NavItem>
             <NavItem>
               <NavLinks to="/cart">                
-                <CartIcon size="27px"/><ShopAmount>{getCartCount()}</ShopAmount>
+                <CartIcon size="27px"/><ShopAmount>{shopTotalProducts}</ShopAmount>
               </NavLinks>
             </NavItem>
           </NavMenu>

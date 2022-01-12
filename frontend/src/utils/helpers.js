@@ -1,4 +1,3 @@
-
 export const handleQuantity = (type, setFunction, quantity, countInStock) => {
     if (type == "plus" && quantity < countInStock) {
         setFunction(prev => prev + 1)
@@ -7,3 +6,4 @@ export const handleQuantity = (type, setFunction, quantity, countInStock) => {
         setFunction(prev => prev - 1)
     }
   }
+  

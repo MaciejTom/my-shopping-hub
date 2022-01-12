@@ -18,21 +18,8 @@ import {
 
 
 const ProductsCategory = ({ category, name }) => {
-  //   const dispatch = useDispatch();
-  // const [cate, setCate] = useState([])
-  // const getProducts = useSelector((state) => state.getProducts);
-
-  // const getProductsByCategory = useSelector((state) => state.getProducstByCategory);
-
-  // const { products, loading, error } = getProducts;
-
-  // const { products2, loading2, error2 } = getProductsByCategory;
-
- 
 
   const { data, loading, error } = useFetchCategory(category);
-
-  console.log(data)
 
   if (loading) {
     return <Spinner />;
