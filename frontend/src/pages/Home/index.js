@@ -1,11 +1,15 @@
 import Header from '../../components/Header'
+import Categories from '../../components/Categories'
+import Newsletter from '../../components/Newsletter'
 
-const Home = ({}) => {
+const Home = () => {
 
     
     return (
         <>
         <Header/>
+        <Categories/>
+        <Newsletter/>
         </>
     )
 }

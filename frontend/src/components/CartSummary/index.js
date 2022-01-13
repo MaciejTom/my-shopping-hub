@@ -12,7 +12,7 @@ import {
   Button,
 } from "./CartSummary.styles";
 
-const CartSummary = ({getCartCount, getCartSubtotal}) => {
+const CartSummary = ({cartCount, cartSubtotal}) => {
   return (
     <Summary>
       <SummaryTitle>ORDER SUMMARY</SummaryTitle>
@@ -22,12 +22,12 @@ const CartSummary = ({getCartCount, getCartSubtotal}) => {
       </SummaryItem>
       <SummaryItem>
         <SummaryItemText>Subtotal items</SummaryItemText>
-        <SummaryItemPrice>{getCartCount()}</SummaryItemPrice>
+        <SummaryItemPrice>{cartCount}</SummaryItemPrice>
       </SummaryItem>
       
       <SummaryItem type="total">
         <SummaryItemText>Total</SummaryItemText>
-        <SummaryItemPrice>${getCartSubtotal()}</SummaryItemPrice>
+        <SummaryItemPrice>${cartSubtotal}</SummaryItemPrice>
       </SummaryItem>
       <Button>CHECKOUT NOW</Button>
     </Summary>

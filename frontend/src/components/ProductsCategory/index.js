@@ -1,24 +1,21 @@
 //Components
 import SingleProductElement from "../SingleProductElement";
 import Spinner from "../Spinner";
+import {HeadingSubpage} from "../HeadingSubpage";
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {useFetchCategory} from '../../hooks/useFetchCategory'
+import { useFetchCategory } from "../../hooks/useFetchCategory";
 
 // Actions
 // import { getProducts as listProducts } from "../../redux/actions/productActions";
 // Styles
 import {
   SidebarContainer,
-  CategoryTitle,
   CategoryProducts,
 } from "./ProductsCategory.styles";
 
-
-
 const ProductsCategory = ({ category, name }) => {
-
   const { data, loading, error } = useFetchCategory(category);
 
   if (loading) {
@@ -29,14 +26,16 @@ const ProductsCategory = ({ category, name }) => {
   }
 
   return (
-    <SidebarContainer>
-      <CategoryTitle>{name}</CategoryTitle>
-      <CategoryProducts>
-        {data.map((product) => (
-          <SingleProductElement key={product._id} {...product} />
-        ))}
-      </CategoryProducts>
-    </SidebarContainer>
+    <>
+     <HeadingSubpage name={name}/>
+      <SidebarContainer>
+        <CategoryProducts>
+          {data.map((product) => (
+            <SingleProductElement key={product._id} {...product} />
+          ))}
+        </CategoryProducts>
+      </SidebarContainer>
+    </>
   );
 };
 

@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 //Components
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
+import Footer from './components/Footer'
 //Pages
 import Home from './pages/Home'
 import Cart from './pages/Cart'
@@ -41,6 +42,7 @@ function App() {
         <Route exact path="/laptops" component={Laptops}/>
         <Route exact path="/phones" component={Phones}/>
       </Switch>
+      <Footer/>
      <GlobalStyles />
     </div>
     </ThemeProvider>

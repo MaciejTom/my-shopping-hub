@@ -1,46 +1,51 @@
 import styled from "styled-components/macro";
 //Icons
-import {AiOutlineMinus, AiOutlinePlus} from "react-icons/ai"
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 
 export const Wrapper = styled.div`
-  padding: 50px;
+  padding: 5rem 2rem;
   display: flex;
   max-width: 1300px;
   margin: 0 auto;
 
-  @media (max-width: 400px) {
-    padding: 10px;
+  @media (max-width: 700px) {
+    padding: 2rem 1rem;
     flex-direction: column;
   }
-  
 `;
 
 export const ImgContainer = styled.div`
   flex: 1;
+  display: flex;
+  align-items: center;
+  @media (max-width: 700px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const Image = styled.img`
-  width: 100%;
-  height: 90vh;
-  object-fit: cover;
+  width: 90%;
+  object-fit: contain;
 
-  @media (max-width: 400px) {
+  @media (max-width: 700px) {
     height: 40vh;
   }
-  
 `;
 
 export const InfoContainer = styled.div`
   flex: 1;
-  padding: 0px 50px;
+  padding: 0 0 0 40px;
 
-  @media (max-width: 400px) {
-    padding: 10px;
+  @media (max-width: 700px) {
+    padding: 20px;
   }
 `;
 
 export const Title = styled.h1`
   font-weight: 200;
+  padding-right: 20px;
 `;
 
 export const Desc = styled.p`
@@ -52,14 +57,9 @@ export const Price = styled.span`
   font-size: 40px;
 `;
 
-export const FilterContainer = styled.div`
-  width: 50%;
-  margin: 30px 0px;
+export const TitleContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-   @media (max-width: 400px) {
-    width: 100%;
-  }
+  align-items: center;
 `;
 
 export const Filter = styled.div`
@@ -89,10 +89,9 @@ export const FilterSize = styled.select`
 export const FilterSizeOption = styled.option``;
 
 export const AddContainer = styled.div`
-  width: 50%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding-top: 20px;
+  justify-content: flex-start;
   @media (max-width: 400px) {
     width: 100%;
   }
@@ -115,15 +114,16 @@ export const Amount = styled.span`
   margin: 0px 5px;
 `;
 
-
 export const Button = styled.button`
   padding: 15px;
   border: 2px solid teal;
   background-color: white;
   cursor: pointer;
   font-weight: 500;
-  &:hover{
-      background-color: #f8f4f4;
+  margin-left: 20px;
+  
+  &:hover {
+    background-color: #f8f4f4;
   }
 `;
 
@@ -132,5 +132,9 @@ export const Minus = styled(AiOutlineMinus)`
 `;
 
 export const Plus = styled(AiOutlinePlus)`
+  cursor: pointer;
+`;
+export const Heart = styled(AiFillHeart)`
+  color: ${({ clicked }) => (clicked ? "#db0000" : "black")};
   cursor: pointer;
 `;

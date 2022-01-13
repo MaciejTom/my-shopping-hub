@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Product,
   ProductDetail,
@@ -16,36 +16,26 @@ import {
   Hr,
   DeleteButton,
   MinusButton,
-  PlusButton
+  PlusButton,
 } from "./CartItem.styles";
 
-
-
 //Helpers
-import {handleQuantity} from '../../utils/helpers'
-//Actions 
-import { addToCart, removeFromCart} from '../../redux/actions/cartActions';
+import { handleQuantity } from "../../utils/helpers";
+//Actions
+import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
 
-const CartItem = ({
-  product,
-  name,
-  imageUrl,
-  price,
-  countInStock,
-  qty,
-}) => {
-
+const CartItem = ({ product, name, imageUrl, price, countInStock, qty }) => {
   const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(qty)
+  const [quantity, setQuantity] = useState(qty);
 
   useEffect(() => {
-    dispatch(addToCart(product, quantity))
-  }, [quantity])
+    dispatch(addToCart(product, quantity));
+  }, [quantity]);
 
- const removeItemFromCart = () => {
-   console.log(product)
-   dispatch(removeFromCart(product))
- }
+  const removeItemFromCart = () => {
+    console.log(product);
+    dispatch(removeFromCart(product));
+  };
   return (
     <>
       <Product>
@@ -59,21 +49,28 @@ const CartItem = ({
               <b>ID:</b> {product}
             </ProductId>
             <ProductColor color="black" />
-            {/* <ProductSize>
-              <b>Size:</b> 37.5
-            </ProductSize> */}
           </Details>
         </ProductDetail>
         <PriceDetail>
           <ProductAmountContainer>
-            <MinusButton size='20px' onClick={() => handleQuantity("minus", setQuantity, quantity, countInStock)} />  
+            <MinusButton
+              size="20px"
+              onClick={() =>
+                handleQuantity("minus", setQuantity, quantity, countInStock)
+              }
+            />
             <ProductAmount>{quantity}</ProductAmount>
 
-            <PlusButton size='20px' onClick={() => handleQuantity("plus", setQuantity, quantity, countInStock)} />
+            <PlusButton
+              size="20px"
+              onClick={() =>
+                handleQuantity("plus", setQuantity, quantity, countInStock)
+              }
+            />
           </ProductAmountContainer>
           <ProductPrice>${price}</ProductPrice>
         </PriceDetail>
-        <DeleteButton onClick={() => removeItemFromCart()}size='25px'/>
+        <DeleteButton onClick={() => removeItemFromCart()} size="25px" />
       </Product>
       <Hr />
     </>

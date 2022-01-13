@@ -1,23 +1,43 @@
 import styled from "styled-components/macro";
+//Icons
+import { BiSearch } from "react-icons/bi";
+import { AiFillHeart } from "react-icons/ai";
+import { FaShoppingCart } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
 export const Product = styled.div`
  max-width: 300px;
  width: 100%;
- padding: 1rem;
+ padding: 1.5rem 1.5rem;
  background: #fff;
- box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
  margin: 8px auto;
  display: flex;
  flex-direction: column;
  justify-content; space-between;
+ border-radius: 10px;
  
+ transition: 1s;
+ &:hover {
+  
+box-shadow: inset 1px 1px 43px -31px rgba(66, 68, 90, 1);
+ }
 
 `;
+
+export const ProductText = styled.div`
+@media (min-width: 650px) {
+  min-height: 150px;
+}
+
+`
+
+
 export const ProductImage = styled.img`
-height: 170px;
-border-radius: 8px;`;
+  max-height: 250px;
+  object-fit: contain;
+  height: 100%;
+`;
 
 export const ProductInfo = styled.div`
   margin-bottom: 8px;
@@ -30,28 +50,38 @@ export const ProductPrice = styled.p`
 export const ProductName = styled.p`
   font-size: 1rem;
   overflow: hidden;
+  font-weight: 700;
 `;
 
 export const ProductDesc = styled.p`
   font-size: 0.8rem;
+`;
+export const ActionsDiv = styled.div`
+  display: flex;
+  justify-content: space-around;
+
+  & > * {
+    cursor: pointer;
+  }
+  /* & > *:Hover {
+  border: red solid 1px;
+  border-radius: 50%;
+  padding: 5px;
   
+ } */
 `;
 
-
-
 export const ProductLink = styled(Link)`
- display: block;
- width: 100%;
- text-decoration: none;
- text-align: center;
- color: #171717;
- background: #f4f4f4;
- padding: 8px 16px;
- border: 1px solid #171717;
- font-size: 1rem; 
-
- &:hover {
-     background: black;
-     color: white;
+ color: black;
  }
+`;
+
+export const Search = styled(BiSearch)``;
+
+export const Heart = styled(AiFillHeart)`
+  color: ${({ clicked }) => (clicked ? "#db0000" : "black")};
+`;
+
+export const Cart = styled(FaShoppingCart)`
+  color: ${({ clicked, theme }) => (clicked ? theme.color : "black")};
 `;

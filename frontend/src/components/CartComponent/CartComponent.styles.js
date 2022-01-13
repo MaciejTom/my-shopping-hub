@@ -1,13 +1,27 @@
 import styled from "styled-components/macro";
 
 export const Wrapper = styled.div`
-  padding: 20px;
   max-width: 1300px;
   margin: 0 auto;
 
   @media (max-width: 400px) {
     padding: 10px;
   }
+`;
+export const Container = styled.div`
+  background: linear-gradient(
+    270deg,
+    rgba(52, 87, 155, 0) 0%,
+    rgba(52, 87, 155, 1) 100%
+  );
+`;
+export const PageTitle = styled.h1`
+  font-size: 1.7rem;
+  color: #171717;
+  padding: 2rem 0;
+  text-transform: uppercase;
+  padding-left: 30px;
+  color: white;
 `;
 
 export const Title = styled.h1`
@@ -54,7 +68,3 @@ export const Bottom = styled.div`
 export const Info = styled.div`
   flex: 3;
 `;
-
-
-
-

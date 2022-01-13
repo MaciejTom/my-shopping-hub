@@ -4,6 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 // Reducers
 import { cartReducer } from "./reducers/cartReducers";
+import { wishlistReducer } from "./reducers/wishlistReducers";
 import {
   // getProductsReducer,
   getProductDetailsReducer,
@@ -11,7 +12,8 @@ import {
 
 const reducer = combineReducers({
   cart: cartReducer,
-  // getProducts: getProductsReducer,
+  wishlist: wishlistReducer,
+    // getProducts: getProductsReducer,
   getProductDetails: getProductDetailsReducer,
 });
 
@@ -21,11 +23,19 @@ const cartItemsInLocalStorage = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem("cart"))
   : [];
 
+  const wishlistItemsInLocalStorage = localStorage.getItem("wishlist")
+  ? JSON.parse(localStorage.getItem("wishlist"))
+  : [];
+
 const INITIAL_STATE = {
   cart: {
     cartItems: cartItemsInLocalStorage,
   },
+  wishlist: {
+    wishlistItems: wishlistItemsInLocalStorage,
+  },
 };
+
 
 const store = createStore(
   reducer,

@@ -4,7 +4,6 @@ import videoImg from "../../img/controller-gaming.png";
 
 //Styles
 import {
-  Content,
   HeroContent,
   HeroItems,
   HeroH1,
