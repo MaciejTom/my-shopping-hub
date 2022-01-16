@@ -13,21 +13,28 @@ import {
 } from "./CartSummary.styles";
 
 const CartSummary = ({cartCount, cartSubtotal}) => {
+
+  const { cartItems } = useSelector((state) => state.cart);
+
+  const getListCount = (list) => {
+    return list.reduce((qty, item) => Number(item.qty) + qty, 0);
+  };
+
+  const getListSubtotal = (list) => {
+    return list.reduce((price, item) => item.price * item.qty + price, 0);
+  };
+
   return (
     <Summary>
       <SummaryTitle>ORDER SUMMARY</SummaryTitle>
       <SummaryItem>
-        <SummaryItemText>Subtotal</SummaryItemText>
-        <SummaryItemPrice>$ 80</SummaryItemPrice>
-      </SummaryItem>
-      <SummaryItem>
-        <SummaryItemText>Subtotal items</SummaryItemText>
-        <SummaryItemPrice>{cartCount}</SummaryItemPrice>
+        <SummaryItemText>Total items</SummaryItemText>
+        <SummaryItemPrice>{getListCount(cartItems)}</SummaryItemPrice>
       </SummaryItem>
       
       <SummaryItem type="total">
         <SummaryItemText>Total</SummaryItemText>
-        <SummaryItemPrice>${cartSubtotal}</SummaryItemPrice>
+        <SummaryItemPrice>${getListSubtotal(cartItems)}</SummaryItemPrice>
       </SummaryItem>
       <Button>CHECKOUT NOW</Button>
     </Summary>

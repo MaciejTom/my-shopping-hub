@@ -2,10 +2,20 @@ import styled from "styled-components/macro";
 
 export const Summary = styled.div`
   flex: 1;
-  border: 0.5px solid lightgray;
+  border: 0.5px solid ${({theme}) => theme.color};
   border-radius: 10px;
   padding: 20px;
-  height: 50vh;
+  height: 100%;
+  @media (max-width: 1050px) {
+    width: 80%;
+    flex-direction: column;
+    align-self: center;
+  }
+  @media (max-width: 600px) {
+    width: 100%;
+    
+  }
+  
 `;
 
 export const SummaryTitle = styled.h1`
@@ -25,9 +35,18 @@ export const SummaryItemText = styled.span``;
 export const SummaryItemPrice = styled.span``;
 
 export const Button = styled.button`
-  width: 100%;
-  padding: 10px;
-  background-color: black;
-  color: white;
-  font-weight: 600;
+  
+    font-size: clamp(1rem,1.5vw,1.3rem);
+    padding: 1rem 2rem;
+    border: none;
+    background: #34579b;
+    color: #fff;
+    -webkit-transition: 0.2s ease-out;
+    transition: 0.2s ease-out;
+    text-transform: capitalize;
+    font-weight: 400;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    width: 100%;
+    border-radius: 5px;
 `;

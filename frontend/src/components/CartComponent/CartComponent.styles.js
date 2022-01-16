@@ -57,14 +57,6 @@ export const TopText = styled.span`
   margin: 0px 10px;
 `;
 
-export const Bottom = styled.div`
-  display: flex;
-  justify-content: space-between;
-  @media (max-width: 400px) {
-    flex-direction: column;
-  }
-`;
 
-export const Info = styled.div`
-  flex: 3;
-`;
+
+

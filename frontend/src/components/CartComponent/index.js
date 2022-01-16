@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-import CartItem from "../CartItem";
 import CartSummary from "../CartSummary";
-import {HeadingSubpage} from "../HeadingSubpage";
+import { HeadingSubpage } from "../HeadingSubpage";
+import ProductList from "../ProductList";
 
 import {
   Wrapper,
@@ -14,7 +14,6 @@ import {
   TopText,
   Bottom,
   Info,
- 
 } from "./CartComponent.styles";
 
 const CartComponent = () => {
@@ -25,6 +24,10 @@ const CartComponent = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
 
+  console.log(cartItems);
+  const array = ['asdasdasd', 'qqqqqq']
+  
+
   const getListCount = (list) => {
     return list.reduce((qty, item) => Number(item.qty) + qty, 0);
   };
@@ -34,9 +37,8 @@ const CartComponent = () => {
   };
 
   return (
-    <> 
-      
-      <HeadingSubpage name={"YOUR BAG"}/>
+    <>
+      <HeadingSubpage name={"YOUR BAG"} />
       <Wrapper>
         <Top>
           <TopButton>CONTINUE SHOPPING</TopButton>
@@ -48,29 +50,15 @@ const CartComponent = () => {
               Your Wishlist ({getListCount(wishlistItems)})
             </TopText>
           </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
+          {/* {cartItems.length > 0 ? <div>WIĘKSZE</div> : <div>MNIEJSZE</div> } */}
         </Top>
-        <Bottom>
-          {isBagDisplaying ? (
-            <>
-              <Info>
-                {cartItems.length ? (
-                  cartItems.map((item) => <CartItem key={item._id} {...item} />)
-                ) : (
-                  <div>
-                    EMPTY CART <Link to="/category">GO BACK</Link>
-                  </div>
-                )}
-              </Info>
-              <CartSummary
-                cartCount={getListCount(cartItems)}
-                cartSubtotal={getListSubtotal(cartItems)}
-              />
-            </>
-          ) : (
-            <div>asd</div>
-          )}
-        </Bottom>
+        <ProductList />
+        <ProductList list={array} cart />
+        {/* {isBagDisplaying ? (
+          <ProductList list={cartItems} cart />
+        ) : (
+          <ProductList list={wishlistItems} />
+        )} */}
       </Wrapper>
     </>
   );

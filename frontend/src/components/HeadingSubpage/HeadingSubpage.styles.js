@@ -17,5 +17,6 @@ export const PageTitle = styled.h1`
   text-transform: uppercase;
   padding-left: 30px;
   color: white;
+  margin: 0;
   
 `;
