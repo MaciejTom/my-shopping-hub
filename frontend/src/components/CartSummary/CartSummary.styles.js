@@ -1,11 +1,13 @@
 import styled from "styled-components/macro";
+import { NavHashLink } from "react-router-hash-link";
 
-export const Summary = styled.div`
+export const Content = styled.div`
   flex: 1;
-  border: 0.5px solid ${({theme}) => theme.color};
+  border: 0.5px solid ${({ theme }) => theme.color};
   border-radius: 10px;
-  padding: 20px;
+  padding: 1.2rem;
   height: 100%;
+
   @media (max-width: 1050px) {
     width: 80%;
     flex-direction: column;
@@ -13,40 +15,43 @@ export const Summary = styled.div`
   }
   @media (max-width: 600px) {
     width: 100%;
-    
   }
-  
 `;
 
-export const SummaryTitle = styled.h1`
+export const Title = styled.h1`
   font-weight: 200;
 `;
 
-export const SummaryItem = styled.div`
-  margin: 30px 0px;
+export const Items = styled.div`
+  margin: 2rem 0px;
   display: flex;
   justify-content: space-between;
   font-weight: ${(props) => props.type === "total" && "500"};
   font-size: ${(props) => props.type === "total" && "24px"};
 `;
 
-export const SummaryItemText = styled.span``;
+export const ItemText = styled.span``;
 
-export const SummaryItemPrice = styled.span``;
+export const ItemPrice = styled.span``;
 
-export const Button = styled.button`
+export const Continue = styled(NavHashLink)`
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  padding: 0.7rem 1rem;
+  border: none;
+  background: #34579b;
+  color: #fff;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+  text-transform: capitalize;
+  font-weight: 400;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  display: block;
+  text-align: center;
+`;
+export const Button = styled(Continue)`
   
-    font-size: clamp(1rem,1.5vw,1.3rem);
-    padding: 1rem 2rem;
-    border: none;
-    background: #34579b;
-    color: #fff;
-    -webkit-transition: 0.2s ease-out;
-    transition: 0.2s ease-out;
-    text-transform: capitalize;
-    font-weight: 400;
-    -webkit-text-decoration: none;
-    text-decoration: none;
-    width: 100%;
-    border-radius: 5px;
 `;

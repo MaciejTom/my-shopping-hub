@@ -16,13 +16,13 @@ export const AmountContainer = styled.div`
   display: flex;
   align-items: center;
   font-weight: 700;
-  padding-bottom: 1rem;
+ 
   @media (max-width: 650px) {
       padding: 0;
   }
 `;
 
-export const Amount = styled.div`
+export const Amount = styled.div` 
   width: 40px;
   height: 40px;
   border-radius: 10px;

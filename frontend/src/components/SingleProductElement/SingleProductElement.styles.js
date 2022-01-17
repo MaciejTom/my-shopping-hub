@@ -18,21 +18,15 @@ export const Product = styled.div`
  border-radius: 10px;
  
  transition: 1s;
- &:hover {
-  
+ &:hover {  
 box-shadow: inset 1px 1px 43px -31px rgba(66, 68, 90, 1);
- }
-
-`;
+ }`;
 
 export const ProductText = styled.div`
-@media (min-width: 650px) {
-  min-height: 150px;
-}
-
-`
-
-
+  @media (min-width: 650px) {
+    min-height: 150px;
+  }
+`;
 export const ProductImage = styled.img`
   max-height: 250px;
   object-fit: contain;
@@ -47,10 +41,11 @@ export const ProductPrice = styled.p`
   font-weight: bold;
 `;
 
-export const ProductName = styled.p`
+export const ProductName = styled.h2`
   font-size: 1rem;
   overflow: hidden;
   font-weight: 700;
+  padding-top: 1rem;
 `;
 
 export const ProductDesc = styled.p`
@@ -63,18 +58,11 @@ export const ActionsDiv = styled.div`
   & > * {
     cursor: pointer;
   }
-  /* & > *:Hover {
-  border: red solid 1px;
-  border-radius: 50%;
-  padding: 5px;
-  
- } */
 `;
 
 export const ProductLink = styled(Link)`
  color: black;
- }
-`;
+ }`;
 
 export const Search = styled(BiSearch)``;
 

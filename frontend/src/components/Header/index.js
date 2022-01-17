@@ -1,33 +1,29 @@
-import React, { useState } from "react";
-
+//Images
 import videoImg from "../../img/controller-gaming.png";
 
 //Styles
 import {
-  HeroContent,
+  Content,
   HeroItems,
-  HeroH1,
-  HeroP,
-  HeroBtn,
+  Header,
+  Subtitle,
+  Button,
   HeroImage,
-  HeroImageDiv
+  HeroImageDiv,
 } from "./Header.styles";
 
 const Hero = () => {
   return (
-    
-      <HeroContent>
-        <HeroItems>
-          <HeroH1>Top Deals</HeroH1>
-          <HeroP>The best electronic store</HeroP>
-          <HeroBtn to="/laptops">Go to shop</HeroBtn>
-        </HeroItems>
-        <HeroImageDiv>
-          
-          <HeroImage src={videoImg} />
-        </HeroImageDiv>
-      </HeroContent>
-    
+    <Content>
+      <HeroItems>
+        <Header>Top Deals</Header>
+        <Subtitle>The best electronic store</Subtitle>
+        <Button to="/laptops">Go to shop</Button>
+      </HeroItems>
+      <HeroImageDiv>
+        <HeroImage src={videoImg} />
+      </HeroImageDiv>
+    </Content>
   );
 };
 

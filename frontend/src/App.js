@@ -16,7 +16,7 @@ import Product from './pages/Product'
 import Gaming from './pages/Gaming'
 import Phones from './pages/Phones'
 import Laptops from './pages/Laptops'
-
+import NotFoundComponent from './components/NotFoundComponent'
 
 function App() {
 
@@ -30,21 +30,23 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-      <div className="App">      
+      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>    
       <Navbar toggleSidebar={toggleSidebar}/>
-      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>  
-      <Switch>
-     
+      
+      <main className="App">  
+      <Switch>     
         <Route exact path="/" component={Home}/>
         <Route exact path="/product/:id" component={Product}/>
         <Route exact path="/cart" component={Cart}/>
         <Route exact path="/gaming" component={Gaming}/>
         <Route exact path="/laptops" component={Laptops}/>
         <Route exact path="/phones" component={Phones}/>
+        <Route path="/*" component={NotFoundComponent}/>
       </Switch>
+      </main>
       <Footer/>
      <GlobalStyles />
-    </div>
+ 
     </ThemeProvider>
     </Router>
   );

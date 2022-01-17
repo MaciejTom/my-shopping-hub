@@ -1,62 +1,47 @@
-import {useState} from "react"
-
-import axios from 'axios'
-
+import { useState } from "react";
+//Axios
+import axios from "axios";
+//Styles
 import {
-  Container,
+  Wrapper,
   Title,
   Desc,
   Form,
   Input,
   Button,
   EmailInfoError,
-  EmailInfoOk
+  EmailInfoOk,
 } from "./Newsletter.styles";
+//Icons
 import { IoMdSend } from "react-icons/io";
-
 import { useForm } from "react-hook-form";
 
 const Newsletter = () => {
-
   const [successMessage, setSuccessMessage] = useState("");
-  
+
   const {
     handleSubmit,
     register,
     formState: { errors },
-    clearErrors
+    clearErrors,
   } = useForm();
 
   const onSubmit = (data) => {
-    
-   console.log(data.email)
-   postData(data)
-  }
-  
+    console.log(data.email);
+    postData(data);
+  };
 
   const postData = async (data) => {
-
-    const respond = await axios.post('/api/emails/add',  data.email);
-    console.log(respond)
-
-     setSuccessMessage(respond.data.message)
-
-  }
-  // const handleError = () => {
-  //   setIsError(true)
-  // }
-  // const errorDissapear = () => {
-  //   console.log("DISA")
-  //   setIsError(false)
-  // }
-//  console.log(errors)
+    const respond = await axios.post("/api/emails/add", data.email);
+    setSuccessMessage(respond.data.message);
+  };
 
   return (
-    <Container>
+    <Wrapper>
       <Title>Newsletter</Title>
       <Desc>Get timely updates from your favorite products.</Desc>
-      <Form onSubmit={handleSubmit(onSubmit)}  >
-        <Input 
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Input
           placeholder="Your email"
           {...register("email", {
             required: "Please enter email address",
@@ -68,18 +53,15 @@ const Newsletter = () => {
           onChange={(e) => {
             clearErrors("email");
             setSuccessMessage("");
-
           }}
         />
         <Button>
-       
           <IoMdSend />
         </Button>
-        
       </Form>
-       {errors.email && <EmailInfoError>{errors.email?.message}</EmailInfoError>}
-          {successMessage && <EmailInfoOk>{successMessage}</EmailInfoOk>} 
-    </Container>
+      {errors.email && <EmailInfoError>{errors.email?.message}</EmailInfoError>}
+      {successMessage && <EmailInfoOk>{successMessage}</EmailInfoOk>}
+    </Wrapper>
   );
 };
 

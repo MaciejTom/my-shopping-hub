@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
   background: linear-gradient(
     0deg,
     rgba(52, 87, 155, 0) 0%,
@@ -15,14 +15,15 @@ export const Container = styled.div`
 `;
 export const Title = styled.h2`
   font-size: clamp(2.5rem, 10vw, 4rem);
-  margin-bottom: 20px;
+  margin-bottom: 1.2rem;
 `;
 
-export const Desc = styled.div`
+export const Desc = styled.p`
   font-size: clamp(1rem, 2.5vw, 2rem);
   font-weight: 300;
   color: #a5a5a5;
-  margin-bottom: 20px;
+  margin: 0;
+  margin-bottom: 1.2rem;
   @media (max-width: 500px) {
     text-align: center;
   }
@@ -44,7 +45,7 @@ export const Form = styled.form`
 export const Input = styled.input`
   border: none;
   flex: 8;
-  padding-left: 20px;
+  padding-left: 1.2rem;
 `;
 
 export const Button = styled.button`

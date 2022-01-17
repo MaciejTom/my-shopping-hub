@@ -5,7 +5,7 @@ import {
   PlusButton,
 } from "./HandleAmount.styles";
 
-export const HandleAmount = ({ plus, minus, amount }) => {
+ const HandleAmount = ({ plus, minus, amount }) => {
   return (
     <AmountContainer>
       <MinusButton onClick={() => minus()} />
@@ -14,3 +14,5 @@ export const HandleAmount = ({ plus, minus, amount }) => {
     </AmountContainer>
   );
 };
+
+export default HandleAmount

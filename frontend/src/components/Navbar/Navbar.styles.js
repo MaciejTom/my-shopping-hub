@@ -5,7 +5,6 @@ import { FaShoppingCart } from "react-icons/fa";
 export const Nav = styled.nav`
   background: white;
   height: 80px;
-  /* margin-top: -80px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +12,8 @@ export const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 10;
+  transition: 1s;
+  ${({ offset }) => offset > 50 && "box-shadow: 0px 5px 27px -12px #747474;"}
 
   @media (max-width: 960px) {
     tansition: 0.8s all ease;
@@ -25,13 +26,11 @@ export const NavbarContainer = styled.div`
   height: 80px;
   z-index: 1;
   width: 100%;
-  padding: 0 24px;
+  padding: 0 1.5rem;
   max-width: 1300px;
 `;
 
 export const NavLinkLogo = styled(Link)`
-  /* justify-self: flex-start; */
-
   cursor: pointer;
   font-size: 1.5rem;
   display: flex;
@@ -67,12 +66,12 @@ export const MobileIcon = styled.div`
     }
   }
 `;
-export const NavMenu = styled.nav`
+export const NavMenu = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
   text-align: center;
-  margin-right: -22px;
+  margin-right: -1.4rem;
 
   @media (max-width: 768px) {
     display: none;
@@ -94,7 +93,7 @@ export const NavLinks = styled(Link)`
   cursor: pointer;
   font-weight: 900;
   color: black;
-
+  border-bottom: 3px solid transparent;
   &:active {
     border-bottom: 3px solid ${({ theme }) => theme.color};
     color: ${({ theme }) => theme.color};
@@ -109,11 +108,14 @@ export const ShopAmount = styled.span`
   height: 20px;
   color: white;
   top: -15px;
-  left: 0px;
-  font-size: 12px;
+  left: 5px;
+  font-size: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export const CartIcon = styled(FaShoppingCart)``;
+export const CartIcon = styled(FaShoppingCart)`
+  left: 5px;
+  position: relative;
+`;

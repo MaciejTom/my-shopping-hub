@@ -4,7 +4,7 @@ import {
     PageTitle
 } from './HeadingSubpage.styles'
 
-export const HeadingSubpage = ({ name }) => {
+const HeadingSubpage = ({ name }) => {
   return (
     <Wrapper>
       <Container>
@@ -13,3 +13,5 @@ export const HeadingSubpage = ({ name }) => {
     </Wrapper>
   );
 };
+
+export default HeadingSubpage

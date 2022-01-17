@@ -65,7 +65,7 @@ const SingleProductElement = ({ imageUrl, name, price, description, _id }) => {
 
   return (
     <Product>
-      <ProductImage src={imageUrl} alt={name} />
+      <ProductImage height="250" width="250" src={imageUrl} alt={name}/>
       <ProductInfo>
         <ProductText>
           <ProductName>{name}</ProductName>

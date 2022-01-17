@@ -3,8 +3,6 @@ import Categories from '../../components/Categories'
 import Newsletter from '../../components/Newsletter'
 
 const Home = () => {
-
-    
     return (
         <>
         <Header/>

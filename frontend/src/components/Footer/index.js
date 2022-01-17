@@ -1,5 +1,4 @@
 import React from "react";
-
 //Styles
 import { Wrapper, Content } from "./Footer.styles";
 

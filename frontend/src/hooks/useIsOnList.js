@@ -1,8 +1,7 @@
 import { useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-export const useIsOnList = (id, flags, setFlags) => {
-    
+export const useIsOnList = (id, flags, setFlags) => {    
     
   const { wishlistItems } = useSelector((state) => state.wishlist);
   
@@ -17,25 +16,16 @@ export const useIsOnList = (id, flags, setFlags) => {
             
                  }))
           }
-
-
         if (wishlistItems.find((item) => item.product == id)) {
             setFlags(prev => ({
                ...prev,
-                   like: !flags.like,
-            
+                   like: !flags.like,            
                  }))
-          }
-        
-    }
-   
+          }        
+    }   
 
   useEffect(() => {
-    isOnList();
-    console.log(flags)
+    isOnList();  
   }, [])
 
- 
-
-//   return { isLiked, isAdd };
 };

@@ -1,43 +1,44 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-
-
+//Styles
 import { 
-  Summary,
-  SummaryTitle,
-  SummaryItem,
-  SummaryItemText,
-  SummaryItemPrice,
+  Content,
+  Title,
+  Items,
+  ItemText,
+  ItemPrice,
   Button,
+  Continue
 } from "./CartSummary.styles";
+//Redux
+import { useSelector } from "react-redux";
+//Hooks
+import {useGetCartCount} from '../../hooks/useGetCartCount'
 
-const CartSummary = ({cartCount, cartSubtotal}) => {
+const CartSummary = () => {
 
   const { cartItems } = useSelector((state) => state.cart);
-
-  const getListCount = (list) => {
-    return list.reduce((qty, item) => Number(item.qty) + qty, 0);
-  };
+  
+//Get total amount of products
+  const shopTotalProducts = useGetCartCount();
 
   const getListSubtotal = (list) => {
     return list.reduce((price, item) => item.price * item.qty + price, 0);
   };
 
   return (
-    <Summary>
-      <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-      <SummaryItem>
-        <SummaryItemText>Total items</SummaryItemText>
-        <SummaryItemPrice>{getListCount(cartItems)}</SummaryItemPrice>
-      </SummaryItem>
+    <Content>
+      <Title>ORDER SUMMARY</Title>
+      <Items>
+        <ItemText>Total items</ItemText>
+        <ItemPrice>{shopTotalProducts}</ItemPrice>
+      </Items>
       
-      <SummaryItem type="total">
-        <SummaryItemText>Total</SummaryItemText>
-        <SummaryItemPrice>${getListSubtotal(cartItems)}</SummaryItemPrice>
-      </SummaryItem>
-      <Button>CHECKOUT NOW</Button>
-    </Summary>
+      <Items type="total">
+        <ItemText>Total</ItemText>
+        <ItemPrice>${getListSubtotal(cartItems)}</ItemPrice>
+      </Items>
+      <Button as="button">CHECKOUT NOW</Button>
+      <Continue smooth to="/#categories" >CONTINUE SHOPPING</Continue>
+    </Content>
   );
 };
 

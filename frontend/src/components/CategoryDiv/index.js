@@ -1,10 +1,11 @@
+//Styles
 import {
   Category,
   Icon,
   CategoryName,
   CategoryButton,
 } from "./CategoryDiv.styles";
-
+//Router
 import {Link} from "react-router-dom";
 
 const CategoryDiv = ({ name, icon, link}) => {
@@ -12,7 +13,6 @@ const CategoryDiv = ({ name, icon, link}) => {
     <Category>
       <Icon src={icon} />
       <CategoryName>{name}</CategoryName>
-
       <Link to={link}><CategoryButton size="30px"/></Link>
     </Category>
   );

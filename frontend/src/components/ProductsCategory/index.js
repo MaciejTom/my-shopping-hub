@@ -1,28 +1,25 @@
 //Components
 import SingleProductElement from "../SingleProductElement";
 import Spinner from "../Spinner";
-import {HeadingSubpage} from "../HeadingSubpage";
-
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import HeadingSubpage from "../HeadingSubpage";
+//Hooks
 import { useFetchCategory } from "../../hooks/useFetchCategory";
-
-// Actions
-// import { getProducts as listProducts } from "../../redux/actions/productActions";
-// Styles
+//Styles
 import {
   SidebarContainer,
   CategoryProducts,
+  Error
 } from "./ProductsCategory.styles";
 
 const ProductsCategory = ({ category, name }) => {
+
   const { data, loading, error } = useFetchCategory(category);
 
   if (loading) {
     return <Spinner />;
   }
   if (error) {
-    return <div>SOMETHING WENT WRONG :/</div>;
+    return <Error>SOMETHING WENT WRONG :/</Error>;
   }
 
   return (

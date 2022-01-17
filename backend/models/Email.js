@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 
 const emailSchema = new mongoose.Schema({
-    email: String
-  
+    email: String  
 })
 
 const Email = mongoose.model('email', emailSchema);

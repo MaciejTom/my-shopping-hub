@@ -1,8 +1,6 @@
+import {useState, useEffect} from 'react'
 //Icons
 import { FaBars } from "react-icons/fa";
-
-//Redux
-import {useSelector} from 'react-redux'
 //Styles
 import {
   Nav,
@@ -16,17 +14,28 @@ import {
   ShopAmount,
   CartIcon
 } from "./Navbar.styles";
-
+//Image
 import logo from '../../img/shopping.png'
+//Hooks
 import {useGetCartCount} from '../../hooks/useGetCartCount'
 
 const Navbar = ({ toggleSidebar }) => {
 
   const shopTotalProducts = useGetCartCount();
+
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+      const onScroll = () => setOffset(window.pageYOffset);   
+    
+      window.addEventListener('scroll', onScroll);
+      return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  
   
   return (
-    <>
-      <Nav>
+   
+      <Nav offset={offset}>
         <NavbarContainer>
           <NavLinkLogo to="/"><NavLogo src={logo} /></NavLinkLogo>
           <MobileIcon>
@@ -53,7 +62,7 @@ const Navbar = ({ toggleSidebar }) => {
           </NavMenu>
         </NavbarContainer>
       </Nav>
-    </>
+    
   );
 };
 

@@ -5,15 +5,11 @@ import { composeWithDevTools } from "redux-devtools-extension";
 // Reducers
 import { cartReducer } from "./reducers/cartReducers";
 import { wishlistReducer } from "./reducers/wishlistReducers";
-import {
-  // getProductsReducer,
-  getProductDetailsReducer,
-} from "./reducers/productReducers";
+import { getProductDetailsReducer } from "./reducers/productReducers";
 
 const reducer = combineReducers({
   cart: cartReducer,
   wishlist: wishlistReducer,
-    // getProducts: getProductsReducer,
   getProductDetails: getProductDetailsReducer,
 });
 

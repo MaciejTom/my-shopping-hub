@@ -1,10 +1,8 @@
 import ProductsCategory from '../../components/ProductsCategory'
 
 const Laptops = () => {
-    return (
-        
-        <ProductsCategory name="Laptops" category="computer"/>
-       
+    return (        
+        <ProductsCategory name="Laptops" category="computer"/>       
     )
 }
 

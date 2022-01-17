@@ -14,7 +14,7 @@ export const SidebarContainer = styled.div`
   transition: 0.3s ease-in-out;
   opacity: ${({ isOpen }) => (isOpen ? "100%" : "0%")};
   top: ${({ isOpen }) => (isOpen ? "0%" : "-100%")};
-  padding: 40px;
+  padding: 2.5rem;
 `;
 export const CloseIcon = styled(FaTimes)`
   color: white;
@@ -62,21 +62,11 @@ export const ShopAmount = styled.div`
   color: ${({ theme }) => theme.color};
   top: -15px;
   left: 0px;
-  font-size: 12px;
+  font-size: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 900;
 `;
 export const CartIcon = styled(FaShoppingCart)``;
-// export const CloseIcon = styled(FaTimes)`
-// color: blue;
 
-// `
-
-// export const Nav = styled.nav`
-// display: flex;
-// flex-direction: column;
-
-// `
-// export const ShopAmount = styled.span``;

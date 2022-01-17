@@ -1,8 +1,7 @@
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 
-export const HeroContent = styled.div`
- 
+export const Content = styled.header` 
   display: flex;
   max-height: 100%;
   max-width: 1300px;
@@ -22,6 +21,7 @@ export const HeroContent = styled.div`
 export const HeroImage = styled.img`
   width: 100%;
   object-fit: contain;
+
   @media (max-width: 600px) {
     max-width: 400px;
   }
@@ -29,6 +29,7 @@ export const HeroImage = styled.img`
 export const HeroImageDiv = styled.div`
   max-width: 600px;
   display: flex;
+  
   @media (max-width: 600px) {
     max-width: 260px;
     justify-content: center;
@@ -39,13 +40,10 @@ export const HeroItems = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
- 
-  max-height: 100%;
-  
+  align-items: flex-start; 
+  max-height: 100%;  
   color: #fff;
-  text-transform: uppercase;
-  
+  text-transform: uppercase;  
   font-weight: bold;
 
   @media screen and (max-width: 650px) {
@@ -53,20 +51,20 @@ export const HeroItems = styled.div`
       }
 `;
 
-export const HeroH1 = styled.h1`
+export const Header = styled.h1`
   color: ${({ theme }) => theme.color};
   font-size: clamp(2.5rem, 10vw, 5rem);
   margin-bottom: 1rem;
   letter-spacing: 3px;
 `;
 
-export const HeroP = styled.p`
+export const Subtitle = styled.p`
   color: #a5a5a5;
   font-size: clamp(1rem, 2.5vw, 2rem);
   margin-bottom: 2rem;
 `;
 
-export const HeroBtn = styled(Link)`
+export const Button = styled(Link)`
   font-size: 1.4rem;
   font-size: clamp(1rem, 1.5vw, 1.5rem);
   padding: 1rem 2rem;
