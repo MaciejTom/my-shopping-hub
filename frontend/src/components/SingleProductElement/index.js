@@ -31,7 +31,8 @@ const SingleProductElement = ({ imageUrl, name, price, description, _id }) => {
   const dispatch = useDispatch();
 
   const { wishlistItems } = useSelector((state) => state.wishlist);
-
+  const  something  = useSelector((state) => state)
+ console.log(something)
   const [flags, setFlags] = useState({
     like: false,
     cart: false,
