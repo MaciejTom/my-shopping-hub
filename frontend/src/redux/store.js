@@ -11,7 +11,7 @@ const reducer = combineReducers({
   cart: cartReducer,
   wishlist: wishlistReducer,
   getProductDetails: getProductDetailsReducer,
-});
+ });
 
 const middleware = [thunk];
 
@@ -29,7 +29,7 @@ const INITIAL_STATE = {
   },
   wishlist: {
     wishlistItems: wishlistItemsInLocalStorage,
-  },
+  }
 };
 
 

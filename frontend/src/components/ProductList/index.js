@@ -9,7 +9,7 @@ const ProductList = ({ list, cart }) => {
     <List>
       <Info list={list.length}>
         {list.length > 0 ? (
-          list.map((item) => <CartItem key={item._id} {...item} cart={cart} />)
+          list.map((item) => <CartItem key={item.product} {...item} cart={cart} />)
         ) : (
           <Empty>YOUR {cart ? "CART" : "WISHLIST"} IS EMPTY!</Empty>
         )}

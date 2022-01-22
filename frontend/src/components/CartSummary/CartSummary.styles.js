@@ -3,10 +3,11 @@ import { NavHashLink } from "react-router-hash-link";
 
 export const Content = styled.div`
   flex: 1;
-  border: 0.5px solid ${({ theme }) => theme.color};
+
   border-radius: 10px;
-  padding: 1.2rem;
+  padding: 2em;
   height: 100%;
+  box-shadow: 0px 1px 6px 1px #e3e3e3;
 
   @media (max-width: 1050px) {
     width: 80%;
@@ -28,6 +29,12 @@ export const Items = styled.div`
   justify-content: space-between;
   font-weight: ${(props) => props.type === "total" && "500"};
   font-size: ${(props) => props.type === "total" && "24px"};
+  ${(props) =>
+    props.type &&
+    ` font-weight: 500;  
+     font-size: 24px;
+    padding: 1em;
+    border-top: 1px solid ${props.theme.color};`}
 `;
 
 export const ItemText = styled.span``;
@@ -53,5 +60,5 @@ export const Continue = styled(NavHashLink)`
   text-align: center;
 `;
 export const Button = styled(Continue)`
-  
+  cursor: pointer;
 `;
