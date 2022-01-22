@@ -12,6 +12,7 @@ Electronics store created in React. The application gets products from MongoDB u
 - NodeJS
 - ExpressJS
 - MongoDB
+- Stripe
 
 ## Live demo
 
