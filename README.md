@@ -16,7 +16,7 @@ Electronics store created in React. The application gets products from MongoDB u
 
 ## Live demo
 
-https://my-shopping-hub.herokuapp.com/
+https://my-shopping-hub-rzmo.onrender.com/
 
 ## How to run locally?
 
@@ -47,7 +47,7 @@ Add a file named '.env' and paste this content:
 
 ```bash
 PORT=5000
-MONGO_URI=mongodb+srv://user:user@my-shopping-hub.wtoke.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+MONGO_URI_SHOPPING=mongodb+srv://user:user@my-shopping-hub.wtoke.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 NODE_ENV=development
 ```
 Go to the client directory
